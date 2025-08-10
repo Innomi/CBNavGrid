@@ -81,8 +81,8 @@ To show debug visualization you need to toggle Navigation show flag as shown bel
 
 ![Debug Settings](Resources/DebugSettings.png)
 
-Debug visualization updated every 1 sec.
-That was needed to avoid stalls during frequent collision updates in editor.
+Debug visualization updates every 1 sec.
+That is needed to avoid stalls during frequent collision updates in editor.
 
 ## Possible future improvements
 
