@@ -333,7 +333,7 @@ void FCBNavGridTileGenerator::GatherNavigationRelevantData(TArray<FCBNavigationD
 		FIntRect AdjustedDirtyGridRect = DirtyArea.GridRect;
 		AdjustedDirtyGridRect.Clip(TileGridRect);
 		
-		if (AdjustedDirtyGridRect.IsEmpty())
+		if (AdjustedDirtyGridRect.Width() == 0 || AdjustedDirtyGridRect.Height() == 0)
 		{
 			continue;
 		}

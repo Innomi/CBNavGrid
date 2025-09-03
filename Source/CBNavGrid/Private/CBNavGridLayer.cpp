@@ -214,7 +214,6 @@ uint32 FCBNavGridLayer::GetCellIndexUnsafe(FIntPoint const Coord) const
 
 FUintPoint FCBNavGridLayer::GetUnsignedCoordUnsafe(FIntPoint const SignedCoord) const
 {
-	check(IsInGrid(SignedCoord));
 	return static_cast<FUintPoint>(SignedCoord - Origin);
 }
 

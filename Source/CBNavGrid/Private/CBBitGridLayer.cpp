@@ -1,5 +1,13 @@
 #include "CBBitGridLayer.h"
 
+namespace
+{
+	bool IsEmptyRect(FUintRect const & Rect)
+	{
+		return Rect.Max.X <= Rect.Min.X || Rect.Max.Y <= Rect.Min.Y;
+	}
+} // namespace
+
 FCBBitGridLayer::FCBBitGridLayer()
 	: Size{ 0, 0 }
 {
@@ -35,7 +43,7 @@ void FCBBitGridLayer::Serialize(FArchive & Archive)
 bool FCBBitGridLayer::Contains(FUintRect const & Rect, bool const bValue) const
 {
 	// TODO: It's ugly as fuck, rewrite it. Have no time right now.
-	if (Rect.IsEmpty())
+	if (IsEmptyRect(Rect))
 	{
 		return false;
 	}
@@ -147,7 +155,7 @@ bool FCBBitGridLayer::Contains(FUintRect const & Rect, bool const bValue) const
 
 void FCBBitGridLayer::SetCells(FUintRect const & Rect, bool const bValue)
 {
-	if (Rect.IsEmpty())
+	if (IsEmptyRect(Rect))
 	{
 		return;
 	}
@@ -258,7 +266,7 @@ void FCBBitGridLayer::CheckRange(FUintPoint const Coord) const
 void FCBBitGridLayer::CheckRange(FUintRect const & Rect) const
 {
 	CheckRange(Rect.Min);
-	CheckRange(Rect.IsEmpty() ? Rect.Max : Rect.Max - FUintPoint{ 1, 1 });
+	CheckRange(IsEmptyRect(Rect) ? Rect.Max : Rect.Max - FUintPoint{1, 1});
 	check(Rect.Min.X <= Rect.Max.X && Rect.Min.Y <= Rect.Max.Y);
 }
 
