@@ -132,12 +132,14 @@ void ACBNavGrid::Serialize(FArchive & Archive)
 void ACBNavGrid::CleanUp()
 {
 	Super::CleanUp();
+
 	if (NavDataGenerator.IsValid())
 	{
 		NavDataGenerator->CancelBuild();
 		NavDataGenerator.Reset();
 	}
 	Tiles.Empty();
+	BoundingGridRect = FIntRect{};
 }
 
 bool ACBNavGrid::NeedsRebuild() const
@@ -169,6 +171,7 @@ void ACBNavGrid::ConditionalConstructGenerator()
 void ACBNavGrid::RebuildAll()
 {
 	Tiles.Empty();
+	BoundingGridRect = FIntRect{};
 
 	Super::RebuildAll();
 }
