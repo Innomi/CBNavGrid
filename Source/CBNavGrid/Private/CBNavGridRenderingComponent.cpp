@@ -19,7 +19,8 @@ namespace
 		bool bShowNavigation = WorldContext->GameViewport && WorldContext->GameViewport->EngineShowFlags.Navigation;
 
 #if WITH_EDITOR
-		if (!bShowNavigation && GEditor && WorldContext->WorldType != EWorldType::Game)
+		EWorldType::Type const WorldType = WorldContext->WorldType;
+		if (!bShowNavigation && GEditor && WorldType != EWorldType::Game && WorldType != EWorldType::PIE)
 		{
 			for (FEditorViewportClient const * const CurrentViewport : GEditor->GetAllViewportClients())
 			{
