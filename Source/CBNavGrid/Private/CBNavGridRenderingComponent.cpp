@@ -101,7 +101,7 @@ void UCBNavGridRenderingComponent::UpdateDrawing()
 FTimerManager * UCBNavGridRenderingComponent::GetTimerManager() const
 {
 #if WITH_EDITOR
-	if (GEditor)
+	if (GEditor && GEditor->IsTimerManagerValid())
 	{
 		return &(GEditor->GetTimerManager().Get());
 	}
