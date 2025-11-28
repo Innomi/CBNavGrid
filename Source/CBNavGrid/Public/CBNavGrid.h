@@ -1,13 +1,12 @@
 #pragma once
 
-#include "CoreMinimal.h"
 #include "NavigationData.h"
 #include "CBNavGrid.generated.h"
 
 class FCBHeightfield;
 class FCBNavGridLayer;
+class FCBNavGridAStarFilter;
 struct FCBNavGridPath;
-struct FCBNavGridAStarFilter;
 
 enum class ECBNavGridPathFlags : int32
 {

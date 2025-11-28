@@ -1,7 +1,9 @@
-#include "CBNavGridToGraphAdapter.h"
+#pragma once 
+
+#include "CBNavGridAStar.h"
 #include "CBGridUtilities.h"
 
-constexpr int32 FCBNavGridToGraphAdapter::GetNeighbourCount(FNodeRef const NodeRef) const
+int32 FCBNavGridToGraphAdapter::GetNeighbourCount(FNodeRef const NodeRef) const
 {
 	return static_cast<int32>(ECBGridDirection::DIRECTIONS_NUM);
 }
