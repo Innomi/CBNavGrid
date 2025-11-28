@@ -200,7 +200,7 @@ uint32 FCBNavGridAStarFilter::GetMaxSearchNodes() const
 	return MaxSearchNodes;
 }
 
-inline FVector::FReal FCBNavGridAStarFilter::GetCostLimit() const
+FVector::FReal FCBNavGridAStarFilter::GetCostLimit() const
 {
 	return CostLimit;
 }
