@@ -1,18 +1,18 @@
 {
-	"FileVersion": 3,
+	"FileVersion": 1,
 	"Version": 1,
-	"VersionName": "1.0",
+	"VersionName": "0.1",
 	"FriendlyName": "CBNavGrid",
 	"Description": "Navigation grid designed to be used in grid based city building game.",
-	"Category": "Other",
+	"Category": "Gameplay",
 	"CreatedBy": "Eugene Nefedov",
 	"CreatedByURL": "https://github.com/Innomi",
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "",
 	"CanContainContent": false,
-	"IsBetaVersion": true,
-	"IsExperimentalVersion": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": true,
 	"Installed": false,
 	"Modules": [
 		{
