@@ -815,6 +815,23 @@ ENavigationQueryResult::Type ACBNavGrid::FindPath(FIntPoint const StartGridCoord
 	return ENavigationQueryResult::Success;
 }
 
+bool ACBNavGrid::GetHeight(FVector2d const & Location, float & OutHeight) const
+{
+	FIntPoint const GridCoord = CBGridUtilities::GetGridCellCoord(Location, GridCellSize);
+	FIntPoint const TileCoord = CBGridUtilities::GetTileCoord(GridCoord, TileSize);
+	if (FCBNavGridLayer const * const NavGridLayer = GetTileNavigationData(TileCoord).Get())
+	{
+		float const Height = NavGridLayer->GetCellHeight(GridCoord);
+		if (!FMath::IsNaN(Height))
+		{
+			OutHeight = Height;
+			return true;
+		}
+	}
+
+	return false;
+}
+
 FIntPoint ACBNavGrid::GetTileCoord(FIntPoint const GridCoord) const
 {
 	return CBGridUtilities::GetTileCoord(GridCoord, TileSize);

@@ -9,6 +9,7 @@
 #include "NavMesh/RecastGeometryExport.h"
 
 #include <concepts>
+#include <limits>
 
 namespace
 {
@@ -123,11 +124,8 @@ namespace
 					OutNavGridLayer.SetCellState(Coord, bIsOccupied);
 					if constexpr (UpdateMethod == EGridCellsUpdateMethod::GeometryChanged)
 					{
-						if (Span)
-						{
-							float const CellHeight = (Span->Min + Span->Max) / 2.f;
-							OutNavGridLayer.SetCellHeight(Coord, CellHeight);
-						}
+						float const CellHeight = Span ? (Span->Min + Span->Max) * 0.5f : std::numeric_limits<float>::quiet_NaN();
+						OutNavGridLayer.SetCellHeight(Coord, CellHeight);
 					}
 				});
 		}
@@ -457,7 +455,7 @@ void FCBNavGridTileGenerator::GenerateNavigationData()
 	}
 	else
 	{
-		GeneratedNavigationData = MakeUnique<FCBNavGridLayer>(GetTileGridRect(), Config.GridCellSize, ENoInit::NoInit);
+		GeneratedNavigationData = MakeUnique<FCBNavGridLayer>(GetTileGridRect(), Config.GridCellSize);
 	}
 
 	GenerateNavigationDataLayer(*GeneratedNavigationData);

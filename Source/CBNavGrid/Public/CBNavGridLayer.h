@@ -1,5 +1,7 @@
 #pragma once
 
+#include <limits>
+
 #include "CBBitGridLayer.h"
 #include "CoreMinimal.h"
 
@@ -7,9 +9,7 @@ class CBNAVGRID_API FCBNavGridLayer : protected FCBBitGridLayer
 {
 public:
 	FCBNavGridLayer();
-	explicit FCBNavGridLayer(FIntRect const & InGridRect, float const InGridCellSize, bool const bIsOccupied = false, float const InitHeights = 0.f);
-	explicit FCBNavGridLayer(FIntRect const & InGridRect, float const InGridCellSize, bool const bIsOccupied, ENoInit);
-	explicit FCBNavGridLayer(FIntRect const & InGridRect, float const InGridCellSize, ENoInit);
+	explicit FCBNavGridLayer(FIntRect const & InGridRect, float const InGridCellSize, bool const bIsOccupied = false, float const InitHeights = std::numeric_limits<float>::quiet_NaN());
 
 	void Serialize(FArchive & Archive);
 	bool IsCellOccupied(FIntPoint const Coord) const;

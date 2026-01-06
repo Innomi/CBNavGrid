@@ -114,6 +114,7 @@ public:
 	FORCEINLINE TArray<FIntPoint> GetTileCoords() const;
 	FORCEINLINE FIntPoint GetTileSize() const;
 	FORCEINLINE bool IsValidTileCoord(FIntPoint const TileCoord) const;
+	bool GetHeight(FVector2d const & Location, float & OutHeight) const;
 	FIntPoint GetTileCoord(FIntPoint const GridCoord) const;
 	TSharedPtr<FCBNavGridLayer const> GetTileNavigationData(FIntPoint const TileCoord) const;
 	TSharedPtr<FCBHeightfield const> GetTileHeightfield(FIntPoint const TileCoord) const;

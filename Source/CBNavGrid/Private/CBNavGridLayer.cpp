@@ -54,24 +54,6 @@ FCBNavGridLayer::FCBNavGridLayer(FIntRect const & InGridRect, float const InGrid
 	CellHeights.Init(InitHeights, InGridRect.Area());
 }
 
-FCBNavGridLayer::FCBNavGridLayer(FIntRect const & InGridRect, float const InGridCellSize, bool const bIsOccupied, ENoInit)
-	: FCBBitGridLayer(static_cast<FUintPoint>(InGridRect.Size()), bIsOccupied)
-	, Origin(InGridRect.Min)
-	, CellSize(InGridCellSize)
-{
-	CheckRect(InGridRect);
-	CellHeights.AddUninitialized(InGridRect.Area());
-}
-
-FCBNavGridLayer::FCBNavGridLayer(FIntRect const & InGridRect, float const InGridCellSize, ENoInit)
-	: FCBBitGridLayer(static_cast<FUintPoint>(InGridRect.Size()), ENoInit::NoInit)
-	, Origin(InGridRect.Min)
-	, CellSize(InGridCellSize)
-{
-	CheckRect(InGridRect);
-	CellHeights.AddUninitialized(InGridRect.Area());
-}
-
 void FCBNavGridLayer::Serialize(FArchive & Archive)
 {
 	FCBBitGridLayer::Serialize(Archive);
